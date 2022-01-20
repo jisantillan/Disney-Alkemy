@@ -8,6 +8,8 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,6 +21,7 @@ import javax.persistence.Table;
 public class Personaje {
 
 @Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 @Getter @Setter @Column(name="id_personaje")
 private Integer id;
 
@@ -37,8 +40,7 @@ private Float peso;
 @Getter @Setter @Column(name="historia")
 private String historia;
 
-@Getter @Setter @Column(name="id_pelicula")
-private Integer peliculas;
+
 
 
 }

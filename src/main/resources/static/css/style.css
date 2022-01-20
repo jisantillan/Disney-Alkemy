@@ -1,0 +1,73 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.encabezado {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+}
+
+body{
+		background:rgb(0, 162, 255);
+
+}
+/* Formulario */
+.contact-form {
+    margin-top: 2em;
+    max-width: 50em;
+    display: flex;
+    justify-content: center;
+    
+
+}
+
+.container-form {
+    display: flex;
+    justify-content: center;
+}
+
+
+.container-contact-form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40em;
+}
+
+label {
+
+    display: flex;
+    text-transform: uppercase;
+    width:100%;
+}
+
+
+
+
+
+
+
+
+.contact-flex-contact-flex--id {
+   
+    /* justify-content: center; */
+    width: 100%;
+    display:flex
+	
+}
+
+.container-botones {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width:100%;
+    display:flex;
+    justify-content: center;
+
+}
+
+.btn-outline-secondary {
+    margin-right: 100px;
+}
