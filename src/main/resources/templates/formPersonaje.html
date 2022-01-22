@@ -70,19 +70,27 @@
                             placeholder="Ingresá su historia" >
                     </div>
                 </div>
-                <div class="contact-flex-contact-flex--id">
+                
+                <label for="pelicula" class="form-label mt-2">Pelicula</label>
+		                     <select class="form-select" th:field="*{peliculas.id}" >
+                            <option th:each="p : ${#lists.sort(peliculas)}" th:text="${p.titulo}" th:value="${p.id}" placeholder="Pelicula"></option>
+                        </select>
+             <!--   <div class="contact-flex-contact-flex--id">
 
                     <div class="contact-name">
                         <label class="input-peliculas" for="peliculas">Peliculas</label>
                         <input class="form-control  form-control-lg" type="text" name="peliculas"
                             th:field="*{peliculas}" placeholder="Ingresá sus peliculas " >
                     </div>
-                </div>
+                </div>-->
 
                 <div class="container-botones">
                     <button type="submit" class="btn btn-outline-secondary btn-lg m-2 ">Enviarr</button>
                     <button type="reset" class="btn btn-outline-secondary btn-lg m-2">Limpiar</button>
                 </div>
+                
+             
+                
         </form>
 	
 

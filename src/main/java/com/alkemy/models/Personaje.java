@@ -6,15 +6,23 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+
 
 
 
@@ -42,9 +50,29 @@ private Float peso;
 
 @Getter @Setter @Column(name="historia")
 private String historia;
-  
-@ManyToMany(mappedBy = "personaje")
-private List <Pelicula> peliculas;
+
+@ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.MERGE)
+@JoinTable(
+        name = "personaje_pelicula",
+        joinColumns = @JoinColumn(name = "id_personaje"),
+        inverseJoinColumns = @JoinColumn(name="id_pelicula")
+    )
+private List <Pelicula> peliculas ;
+
+public List<Pelicula> getPeliculas() {
+	return peliculas;
+}
+
+public void setPeliculas(List<Pelicula> peliculas) {
+	this.peliculas = peliculas;
+}
 
 
 }
+
+
+
+
+
+
+

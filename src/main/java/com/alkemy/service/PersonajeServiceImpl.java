@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.alkemy.dao.PersonajeDao;
 import com.alkemy.models.Personaje;
+import com.alkemy.repository.PersonajeRepository;
 
 @Service
 public class PersonajeServiceImpl implements PersonajeService{
 
 	@Autowired
-	private PersonajeDao personajeDao;
+	private PersonajeRepository personajeDao;
 	
 	@Override
 	@Transactional(readOnly = true)
@@ -37,14 +37,14 @@ public class PersonajeServiceImpl implements PersonajeService{
 	}
 
 	@Override
-	public Personaje getPersonaje(Personaje personaje) {
-		return personajeDao.findById(personaje.getId()).orElse(null);
+	public Personaje getPersonaje(Integer id) {
+		return personajeDao.findById(id).orElse(null);
 	}
 
 
 	@Override
-	public void eliminar(Personaje personaje) {
-		personajeDao.deleteById(personaje.getId());
+	public void eliminar(Integer id) {
+		personajeDao.deleteById(id);
 		
 	}
 

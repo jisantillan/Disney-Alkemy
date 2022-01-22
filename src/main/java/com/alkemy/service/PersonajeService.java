@@ -9,7 +9,7 @@ public interface PersonajeService {
 	public List<Personaje> listarPersonajes();
 	public void guardar (Personaje personaje);
 	public void actualizar (Personaje personaje);
-	public Personaje getPersonaje(Personaje personaje);
-	public void eliminar(Personaje personaje);
+	public Personaje getPersonaje(Integer id);
+	public void eliminar(Integer id);
 	
 }

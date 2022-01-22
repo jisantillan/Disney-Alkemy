@@ -7,10 +7,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +22,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="pelicula")
@@ -37,19 +44,28 @@ public class Pelicula {
 	@Getter @Setter @Column(name="fecha")
 	private Date fecha;
 
-	@Getter @Setter @Column(name="calificación")
-	private Integer calificación;
+	@Getter @Setter @Column(name="calificacion")
+	private Integer calificacion;
 
 	@Getter @Setter @Column(name="imagen")
 	private String imagen;
 	
-   @JoinTable(
-	        name = "personaje_pelicula",
-	        joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
-	        inverseJoinColumns = @JoinColumn(name="id_personaje", nullable = false)
-	    )
-	@ManyToMany
-	private List <Personaje> personajes;
+	@ManyToMany(fetch=FetchType.LAZY, mappedBy = "peliculas" )
+
+private List <Personaje> personajes;
+
+	public List<Personaje> getPersonajes() {
+		return personajes;
+	}
+
+	public void setPersonajes(List<Personaje> personajes) {
+		this.personajes = personajes;
+	}
+
+
+
+
+   
 
 }
 
