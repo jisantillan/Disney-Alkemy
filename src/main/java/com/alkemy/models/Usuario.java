@@ -82,7 +82,7 @@ public class Usuario implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return !locked;
+		return true;
 	}
 
 	@Override
