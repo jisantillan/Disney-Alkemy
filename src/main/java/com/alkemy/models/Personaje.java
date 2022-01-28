@@ -19,6 +19,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 
 
@@ -54,6 +56,7 @@ private String historia;
         joinColumns = @JoinColumn(name = "id_personaje"),
         inverseJoinColumns = @JoinColumn(name="id_pelicula")
     )
+@JsonIgnoreProperties("personajes")
 private List <Pelicula> peliculas ;
 
 public List<Pelicula> getPeliculas() {

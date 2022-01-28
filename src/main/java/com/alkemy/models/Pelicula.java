@@ -51,8 +51,8 @@ public class Pelicula {
 	private String imagen;
 	
 	@ManyToMany(fetch=FetchType.LAZY, mappedBy = "peliculas" )
-
-private List <Personaje> personajes;
+	@JsonIgnoreProperties("peliculas")
+	private List <Personaje> personajes;
 
 	public List<Personaje> getPersonajes() {
 		return personajes;
