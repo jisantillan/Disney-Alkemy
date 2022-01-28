@@ -22,10 +22,6 @@ public class CharacterRestController {
 	private PersonajeService personajeServicio;
 	
 
-	@RequestMapping("/")
-	public String index(Model model) {
-		return "index";
-	}
 
 
 	@PostMapping("/guardar")
@@ -36,7 +32,7 @@ public class CharacterRestController {
 	
 //	
 	
-	@GetMapping(value = "/listar")
+	@GetMapping()
 	public List<Personaje> listar() {
 		return personajeServicio.listarPersonajes();
 	}
