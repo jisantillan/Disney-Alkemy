@@ -62,6 +62,12 @@ public class PersonajeServiceImpl implements PersonajeService{
 	}
 
 
+	@Override
+	public Iterable<Object[]> buscarPorIdPelicula(Integer id) {
+		return personajeDao.buscarPorIdPelicula(id);
+	}
+
+
 
 
 

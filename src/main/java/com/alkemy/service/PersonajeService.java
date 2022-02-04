@@ -8,6 +8,7 @@ public interface PersonajeService {
 	public Iterable<Object[]> listarPersonajes();
 	public Iterable<Object[]> buscarPorNombre(String nombre);
 	public Iterable<Object[]> buscarPorEdad(Integer edad);
+	public Iterable<Object[]> buscarPorIdPelicula(Integer id);
 
 	public void guardar (Personaje personaje);
 	public void actualizar (Personaje personaje);

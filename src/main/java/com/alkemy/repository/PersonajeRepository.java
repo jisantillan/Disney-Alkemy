@@ -19,8 +19,13 @@ public interface PersonajeRepository extends JpaRepository<Personaje, Integer >{
     @Query(value = "SELECT p.nombre,p.imagen FROM Personaje p WHERE p.edad = ?1")
     public Iterable<Object[]> buscarPorEdad( Integer filtro);
     
-//    @Query (value = "SELECT p.nombre, p.imagen FROM personaje AS p INNER JOIN personaje_pelicula AS pp ON pp.id_pelicula = 1;", nativeQuery= true)
-//    public Iterable<Object[]> listarPorIdPelicula();
-//	
+    @Query (value = "SELECT p.nombre, p.imagen\r\n"
+    		+ "FROM personaje as p\r\n"
+    		+ "WHERE p.id =\r\n"
+    		+ "(SELECT personaje_pelicula.id_personaje\r\n"
+    		+ "FROM personaje_pelicula\r\n"
+    		+ "WHERE personaje_pelicula.id_personaje = ?1)", nativeQuery= true)
+    public Iterable<Object[]> buscarPorIdPelicula(Integer id);
+
 }
 

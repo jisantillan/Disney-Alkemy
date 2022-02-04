@@ -54,6 +54,11 @@ public class CharacterRestController {
         return personajeServicio.buscarPorEdad(age);
     }
     
+    @GetMapping(params="movies")
+    public Iterable<Object[]> listarPorId(@RequestParam("movies") Integer movies){
+        return personajeServicio.buscarPorIdPelicula(movies);
+    }
+    
 	@DeleteMapping(path = "delete/{id}")
     public String delete(@PathVariable("id") Integer id){
         try {
