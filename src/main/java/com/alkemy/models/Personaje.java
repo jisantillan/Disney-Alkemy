@@ -1,14 +1,13 @@
 package com.alkemy.models;
 
 
-import lombok.EqualsAndHashCode;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,31 +22,29 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
-
-
 @Entity
 @Table(name="personaje")
-@ToString @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Personaje {
 
-@Id
+
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-@Getter @Setter @Column(name="id_personaje")
+
+@Id
 private Integer id;
 
-@Getter @Setter @Column(name="nombre")
+
 private String nombre;
 
-@Getter @Setter @Column(name="imagen")
 private String imagen;
 
-@Getter @Setter @Column(name="edad")
 private Integer edad;
 
-@Getter @Setter @Column(name="peso")
 private Float peso;
 
-@Getter @Setter @Column(name="historia")
 private String historia;
 
 @ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.MERGE)

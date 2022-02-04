@@ -17,11 +17,16 @@ public class PersonajeServiceImpl implements PersonajeService{
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<Personaje> listarPersonajes() {
-		return personajeDao.findAll();
+	public Iterable<Object[]> listarPersonajes() {
+		Iterable<Object[]>personajes = personajeDao.listar();
+		  	return personajes;
 	}
 
 
+	@Override
+	public Personaje listarPorId(Integer id) {
+		return personajeDao.findById(id).orElse(null);
+	}
 	@Override
 	@Transactional()
 	public void guardar(Personaje personaje) {
@@ -36,10 +41,6 @@ public class PersonajeServiceImpl implements PersonajeService{
 		
 	}
 
-	@Override
-	public Personaje getPersonaje(Integer id) {
-		return personajeDao.findById(id).orElse(null);
-	}
 
 
 	@Override
@@ -47,5 +48,21 @@ public class PersonajeServiceImpl implements PersonajeService{
 		personajeDao.deleteById(id);
 		
 	}
+
+
+	@Override
+	public Iterable<Object[]> buscarPorNombre(String nombre) {
+		return personajeDao.buscarPorNombre(nombre);
+	}
+
+
+	@Override
+	public Iterable<Object[]> buscarPorEdad(Integer edad) {
+		return personajeDao.buscarPorEdad(edad);
+	}
+
+
+
+
 
 }
