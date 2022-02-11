@@ -7,23 +7,18 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.sql.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -54,18 +49,25 @@ public class Pelicula {
 	@JsonIgnoreProperties("peliculas")
 	private List <Personaje> personajes;
 
+	
+    @OneToMany(mappedBy="pelicula")
+    public List <Genero> generos; 
+    
+
 	public List<Personaje> getPersonajes() {
 		return personajes;
 	}
-
-	public void setPersonajes(List<Personaje> personajes) {
+    public void setPersonajes(List<Personaje> personajes) {
 		this.personajes = personajes;
 	}
+	public List<Genero> getGeneros() {
+		return generos;
+	}
+	public void setGeneros(List<Genero> generos) {
+		this.generos = generos;
+	}
+    
 
-
-
-
-   
 
 }
 

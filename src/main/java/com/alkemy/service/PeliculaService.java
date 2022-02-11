@@ -9,5 +9,5 @@ public interface PeliculaService {
 	public void guardar (Pelicula pelicula);
 	public void actualizar (Pelicula pelicula);
 	public Pelicula getPelicula(Pelicula pelicula);
-	public void eliminar(Pelicula pelicula);
+	public void eliminar(Integer id);
 }

@@ -41,9 +41,12 @@ public class PeliculaServiceImpl implements PeliculaService {
 		return peliculaDao.findById(pelicula.getId()).orElse(null);
 	}
 
+	
 	@Override
-	public void eliminar(Pelicula pelicula) {
-		peliculaDao.deleteById(pelicula.getId());
+	public void eliminar(Integer id) {
+		peliculaDao.deleteById(id);
+	
+
 	}
 	
 	
