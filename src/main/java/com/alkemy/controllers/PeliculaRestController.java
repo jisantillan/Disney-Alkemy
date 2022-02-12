@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alkemy.models.Pelicula;
@@ -31,26 +32,23 @@ public class PeliculaRestController {
 	
 //	
 	
+
+	
 	@GetMapping()
-	public List<Pelicula> listar() {
-		return peliculaServicio.listarPelicula();
+	public Iterable<Object[]> listar() {
+		return peliculaServicio.listarPeliculas();
 	}
 	
-//	@GetMapping()
-//	public Iterable<Object[]> listar() {
-//		return peliculaServicio.listarPelicula();
-//	}
-//	
-//	@GetMapping(path = "/{id}")
-//    public Personaje detalle(@PathVariable("id") Integer id){
-//       return peliculaServicio.listarPorId(id);
-//      
-//    }
-//	
-//	@GetMapping(params="name")
-//    public Iterable<Object[]> listarPorNombre(@RequestParam("name") String name){
-//        return peliculaServicio.buscarPorNombre(name);
-//    }
+	@GetMapping(path = "/{id}")
+    public Pelicula detalle(@PathVariable("id") Integer id){
+       return peliculaServicio.getPelicula(id);
+      
+    }
+	
+	@GetMapping(params="name")
+    public Iterable<Object[]> listarPorNombre(@RequestParam("name") String name){
+        return peliculaServicio.buscarPorNombre(name);
+    }
 //	
 //    @GetMapping(params="age")
 //    public Iterable<Object[]> listarPorEdad(@RequestParam("age") Integer age){

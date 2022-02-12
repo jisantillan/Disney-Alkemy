@@ -17,10 +17,12 @@ public class PeliculaServiceImpl implements PeliculaService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Pelicula> listarPelicula() {
+	public Iterable<Object[]> listarPeliculas() {
 		
-		return peliculaDao.findAll();
-	}
+		Iterable<Object[]>peliculas = peliculaDao.listar();
+	  	return peliculas;	}
+	
+	
 
 	@Override
 	@Transactional
@@ -37,8 +39,8 @@ public class PeliculaServiceImpl implements PeliculaService {
 	}
 
 	@Override
-	public Pelicula getPelicula(Pelicula pelicula) {
-		return peliculaDao.findById(pelicula.getId()).orElse(null);
+	public Pelicula getPelicula(Integer id) {
+		return peliculaDao.findById(id).orElse(null);
 	}
 
 	
@@ -47,6 +49,13 @@ public class PeliculaServiceImpl implements PeliculaService {
 		peliculaDao.deleteById(id);
 	
 
+	}
+
+
+
+	@Override
+	public Iterable<Object[]> buscarPorNombre(String nombre) {
+		return peliculaDao.buscarPorNombre(nombre);
 	}
 	
 	

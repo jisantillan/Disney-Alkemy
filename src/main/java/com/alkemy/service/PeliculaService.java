@@ -5,9 +5,12 @@ import java.util.List;
 import com.alkemy.models.Pelicula;
 
 public interface PeliculaService {
-	public List<Pelicula> listarPelicula();
+	
+	public Iterable<Object[]> listarPeliculas();
+	public Iterable<Object[]> buscarPorNombre(String nombre);
+	
 	public void guardar (Pelicula pelicula);
 	public void actualizar (Pelicula pelicula);
-	public Pelicula getPelicula(Pelicula pelicula);
+	public Pelicula getPelicula(Integer id);
 	public void eliminar(Integer id);
 }
