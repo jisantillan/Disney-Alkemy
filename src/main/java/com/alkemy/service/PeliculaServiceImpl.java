@@ -1,6 +1,5 @@
 package com.alkemy.service;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,9 +56,29 @@ public class PeliculaServiceImpl implements PeliculaService {
 	public Iterable<Object[]> buscarPorNombre(String nombre) {
 		return peliculaDao.buscarPorNombre(nombre);
 	}
+
+
+
+	@Override
+	public Iterable<Object[]> buscarPorGenero(Integer id_genero) {
+		return peliculaDao.buscarPorGenero(id_genero);
+	}
+
+
+
+	@Override
+	public Iterable<Object[]> listarPorOrden(String orden) {
+	        if(orden.equals("ASC")){
+	            return peliculaDao.listarOrdenAsc();            
+	        }else if(orden.equals("DESC")){
+	            return peliculaDao.listarOrdenDesc();  
+	        }
+			return null;
+	    }
+	}
 	
 	
 
 
 	
-}
+

@@ -21,18 +21,11 @@ public class PeliculaRestController {
 	@Autowired
 	private PeliculaService peliculaServicio;
 	
-
-
-
 	@PostMapping("/guardar")
 	public void guardar( @RequestBody Pelicula pelicula) {
-		 
 		peliculaServicio.guardar(pelicula) ;
 	}
 	
-//	
-	
-
 	
 	@GetMapping()
 	public Iterable<Object[]> listar() {
@@ -41,33 +34,30 @@ public class PeliculaRestController {
 	
 	@GetMapping(path = "/{id}")
     public Pelicula detalle(@PathVariable("id") Integer id){
-       return peliculaServicio.getPelicula(id);
-      
+       return peliculaServicio.getPelicula(id);     
     }
 	
 	@GetMapping(params="name")
     public Iterable<Object[]> listarPorNombre(@RequestParam("name") String name){
         return peliculaServicio.buscarPorNombre(name);
     }
-//	
-//    @GetMapping(params="age")
-//    public Iterable<Object[]> listarPorEdad(@RequestParam("age") Integer age){
-//        return peliculaServicio.buscarPorEdad(age);
-//    }
-//    
-//    @GetMapping(params="movies")
-//    public Iterable<Object[]> listarPorId(@RequestParam("movies") Integer movies){
-//        return peliculaServicio.buscarPorIdPelicula(movies);
-//    }
+    @GetMapping(params="genre")
+    public Iterable<Object[]> listarPorEdad(@RequestParam("genre") Integer genre){
+        return peliculaServicio.buscarPorGenero(genre);
+    }
+    
+    @GetMapping(params="order")
+    public Iterable<Object[]> listarPorId(@RequestParam("order") String orden){
+        return peliculaServicio.listarPorOrden(orden);
+    }
     
 	@DeleteMapping(path = "delete/{id}")
     public String delete(@PathVariable("id") Integer id){
-        try {
-        	
+        try {        	
         	peliculaServicio.eliminar(id);
-            return "Personaje "+ id +" eliminado con exito";
+            return "La pelicula con ID:  "+ id +"  fue eliminada con exito";
         } catch (Exception e) {
-            return "Error eliminando el personaje"+ id ;
+            return "Error eliminando la pelicula con ID: "+ id ;
         }
     }
 }
