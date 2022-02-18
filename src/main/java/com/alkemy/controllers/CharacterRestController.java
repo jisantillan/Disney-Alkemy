@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,11 +32,12 @@ public class CharacterRestController {
 	//	POST METHOD
 	
 	@PostMapping("/guardar")
-	public void guardar( @RequestPart(value = "imagen_personaje", required = false) MultipartFile image,@RequestPart("json_personaje") Personaje personaje) {
+	public ResponseEntity<String> guardar( @RequestPart(value = "imagen_personaje", required = false) MultipartFile image,@RequestPart("json_personaje") Personaje personaje) {
 		if(!(image==null)) {
 			procesarimagen(image, personaje);
 		}
 		personajeServicio.guardar(personaje) ;
+		return ResponseEntity.status(HttpStatus.CREATED).body("Personaje creado con exito");
 	}
 	
 
@@ -57,53 +60,50 @@ public class CharacterRestController {
 	//	PUT METHOD
 	
 	@PutMapping("/editar/{id}")
-	public  void editarPersonaje(@PathVariable("id") Integer id, @RequestPart(value = "imagen_personaje", required = false) MultipartFile image,@RequestPart("json_personaje") Personaje personaje) {
+	public ResponseEntity<Void> editarPersonaje(@PathVariable("id") Integer id, @RequestPart(value = "imagen_personaje", required = false) MultipartFile image,@RequestPart("json_personaje") Personaje personaje) {
 		if(!(image==null)) {
 			procesarimagen(image, personaje);
 		}
 		personajeServicio.editarPersonajeById(id, personaje);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
 	}
 	
 	//	GET METHODS
 
 	@GetMapping()
-	public Iterable<Object[]> listar() {
-		return personajeServicio.listarPersonajes();
+	public ResponseEntity<Iterable<Object[]>> listar() {
+		return ResponseEntity.status(HttpStatus.OK).body(personajeServicio.listarPersonajes());
 	}
 
 	@GetMapping(path = "/{id}")
-	public Personaje detalle(@PathVariable("id") Integer id){
-		return personajeServicio.listarPorId(id);
-
+	public ResponseEntity<Personaje> detalle(@PathVariable("id") Integer id){
+		return ResponseEntity.status(HttpStatus.OK).body(personajeServicio.listarPorId(id));
 	}
 	
 	//	DELETE METHOD
-
+	
 	@DeleteMapping(path = "delete/{id}")
-	public String delete(@PathVariable("id") Integer id){
-		try {
-			personajeServicio.eliminar(id);
-			return "Personaje "+ id +" eliminado con exito";
-		} catch (Exception e) {
-			return "Error eliminando el personaje"+ id ;
-		}
+	public ResponseEntity<Void> delete(@PathVariable("id") Integer id){
+		personajeServicio.eliminar(id);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 
 	// FILTERS
 
 	@GetMapping(params="name")
-	public Iterable<Object[]> listarPorNombre(@RequestParam("name") String name){
-		return personajeServicio.buscarPorNombre(name);
+	public ResponseEntity<Iterable<Object[]>> listarPorNombre(@RequestParam("name") String name){
+		return ResponseEntity.status(HttpStatus.OK).body(personajeServicio.buscarPorNombre(name));
 	}
 
 	@GetMapping(params="age")
-	public Iterable<Object[]> listarPorEdad(@RequestParam("age") Integer age){
-		return personajeServicio.buscarPorEdad(age);
+	public ResponseEntity<Iterable<Object[]>> listarPorEdad(@RequestParam("age") Integer age){
+		return ResponseEntity.status(HttpStatus.OK).body(personajeServicio.buscarPorEdad(age));
 	}
 
 	@GetMapping(params="movies")
-	public Iterable<Object[]> listarPorId(@RequestParam("movies") Integer movies){
-		return personajeServicio.buscarPorIdPelicula(movies);
+	public ResponseEntity<Iterable<Object[]>> listarPorId(@RequestParam("movies") Integer movies){
+		return ResponseEntity.status(HttpStatus.OK).body(personajeServicio.buscarPorIdPelicula(movies));
 	}
 
 
