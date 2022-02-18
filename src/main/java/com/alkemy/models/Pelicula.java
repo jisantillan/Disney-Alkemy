@@ -1,7 +1,6 @@
 package com.alkemy.models;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -34,10 +33,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @NoArgsConstructor
 public class Pelicula {
 
-
-
-	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@Id
 	@Getter @Setter @Column(name="id_pelicula")
 	private Integer id;
 
@@ -56,10 +54,6 @@ public class Pelicula {
 	@ManyToMany(fetch=FetchType.LAZY, mappedBy = "peliculas" )
 	@JsonIgnoreProperties("peliculas")
 	private List <Personaje> personajes;
-
-//    @OneToMany(mappedBy="pelicula")
-
-//    @OneToMany(mappedBy = "pelicula", cascade = CascadeType.ALL, orphanRemoval = true)
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name="id_genero")
@@ -72,8 +66,6 @@ public class Pelicula {
     public void setPersonajes(List<Personaje> personajes) {
 		this.personajes = personajes;
 	}
-
-    
 
 
 }

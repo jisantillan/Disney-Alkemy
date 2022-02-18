@@ -1,6 +1,5 @@
 package com.alkemy.service;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,15 +32,6 @@ public class PersonajeServiceImpl implements PersonajeService{
 		personajeDao.save(personaje);
 	}
 
-	
-	@Override
-	@Transactional
-	public void actualizar(Personaje personaje) {
-		personajeDao.save(personaje);
-		
-	}
-
-
 
 	@Override
 	public void eliminar(Integer id) {
@@ -67,8 +57,32 @@ public class PersonajeServiceImpl implements PersonajeService{
 		return personajeDao.buscarPorIdPelicula(id);
 	}
 
-
-
-
+	
+	@Override
+	@Transactional()	
+	public void editarPersonajeById(Integer id, Personaje personaje) {
+		
+		if(personaje.getNombre() != null) {
+			personajeDao.findById(id).orElse(null).setNombre(personaje.getNombre());;
+		}
+		if(personaje.getHistoria() != null) {
+			personajeDao.findById(id).orElse(null).setHistoria(personaje.getHistoria());;
+		}
+		if(personaje.getEdad() != null) {
+			personajeDao.findById(id).orElse(null).setEdad(personaje.getEdad());;
+		}
+		if(personaje.getPeso() != null) {
+			personajeDao.findById(id).orElse(null).setPeso(personaje.getPeso());;
+		}
+		if(personaje.getPeliculas() != null) {
+			personajeDao.findById(id).orElse(null).setPeliculas(personaje.getPeliculas());;
+		}
+		if(personaje.getImagen() != null) {
+			personajeDao.findById(id).orElse(null).setImagen(personaje.getImagen());;
+		}
+		
+		personajeDao.save(personajeDao.findById(id).orElse(null));
+		
+	}
 
 }

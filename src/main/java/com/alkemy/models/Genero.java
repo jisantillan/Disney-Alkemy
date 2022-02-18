@@ -1,7 +1,6 @@
 package com.alkemy.models;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,7 +18,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Data
@@ -30,8 +28,10 @@ public class Genero {
 
 
 
-	@Id
+	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@Id
 	@Getter @Setter 
 	private Integer id_genero;
 

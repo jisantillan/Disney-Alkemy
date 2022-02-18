@@ -30,39 +30,37 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Setter
 public class Personaje {
 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	private Integer id;
 
-@Id
-private Integer id;
+	private String nombre;
 
+	private String imagen;
 
-private String nombre;
+	private Integer edad;
 
-private String imagen;
+	private Float peso;
 
-private Integer edad;
+	private String historia;
 
-private Float peso;
+	@ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.MERGE)
+	@JoinTable(
+			name = "personaje_pelicula",
+			joinColumns = @JoinColumn(name = "id_personaje"),
+			inverseJoinColumns = @JoinColumn(name="id_pelicula")
+			)
+	@JsonIgnoreProperties("personajes")
+	private List <Pelicula> peliculas ;
 
-private String historia;
+	public List<Pelicula> getPeliculas() {
+		return peliculas;
+	}
 
-@ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.MERGE)
-@JoinTable(
-        name = "personaje_pelicula",
-        joinColumns = @JoinColumn(name = "id_personaje"),
-        inverseJoinColumns = @JoinColumn(name="id_pelicula")
-    )
-@JsonIgnoreProperties("personajes")
-private List <Pelicula> peliculas ;
-
-public List<Pelicula> getPeliculas() {
-	return peliculas;
-}
-
-public void setPeliculas(List<Pelicula> peliculas) {
-	this.peliculas = peliculas;
-}
+	public void setPeliculas(List<Pelicula> peliculas) {
+		this.peliculas = peliculas;
+	}
 
 
 }

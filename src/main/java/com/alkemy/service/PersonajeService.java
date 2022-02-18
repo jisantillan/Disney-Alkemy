@@ -11,7 +11,7 @@ public interface PersonajeService {
 	public Iterable<Object[]> buscarPorIdPelicula(Integer id);
 
 	public void guardar (Personaje personaje);
-	public void actualizar (Personaje personaje);
+	public void editarPersonajeById(Integer id, Personaje personaje);
 	public void eliminar(Integer id);
 	public Personaje listarPorId(Integer id);
 	
