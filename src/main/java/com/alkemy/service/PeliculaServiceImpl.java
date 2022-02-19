@@ -79,9 +79,6 @@ public class PeliculaServiceImpl implements PeliculaService {
 		if(pelicula.getPersonajes() != null) {
 			peliculaDao.findById(id).orElse(null).setPersonajes(pelicula.getPersonajes());;
 		}
-		if(pelicula.getCalificacion() != null) {
-			peliculaDao.findById(id).orElse(null).setCalificacion(pelicula.getCalificacion());;
-		}
 		if(pelicula.getFecha() != null) {
 			peliculaDao.findById(id).orElse(null).setFecha(pelicula.getFecha());;
 		}

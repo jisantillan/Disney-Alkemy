@@ -58,7 +58,7 @@ public class PeliculaRestController {
 	//	PUT METHOD
 
 	@PutMapping("/editar/{id}")
-	public  ResponseEntity<Void> editarPelicula(@PathVariable("id") Integer id, @RequestPart(value = "imagen_personaje", required = false) MultipartFile image,@RequestPart("json_pelicula") Pelicula pelicula) {
+	public  ResponseEntity<Void> editarPelicula(@PathVariable("id") Integer id, @RequestPart(value = "imagen_pelicula", required = false) MultipartFile image,@RequestPart("json_pelicula") Pelicula pelicula) {
 		if(!(image==null)) {
 			procesarimagen(image, pelicula);
 		}

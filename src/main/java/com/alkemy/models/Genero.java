@@ -3,8 +3,7 @@ package com.alkemy.models;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+
 import lombok.ToString;
 
 import java.util.List;
@@ -26,30 +25,19 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @ToString @EqualsAndHashCode
 public class Genero {
 
-
-
-	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	@Id
-	@Getter @Setter 
 	private Integer id_genero;
 
-	@Getter @Setter 
 	private String nombre;
 
-	@Getter @Setter 
 	private String imagen;
 	
 	@OneToMany(mappedBy = "genero",fetch=FetchType.LAZY, cascade = CascadeType.MERGE)	
 	@JsonManagedReference
-	private List <Pelicula> films;
+	private List <Pelicula> peliculas;
 	 
-	 
-
-
-
-
-   
+  
 
 }
