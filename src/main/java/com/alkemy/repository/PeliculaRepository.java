@@ -3,7 +3,7 @@ package com.alkemy.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.alkemy.models.Pelicula;
+import com.alkemy.entity.Pelicula;
 
 public interface PeliculaRepository extends JpaRepository<Pelicula, Integer>{
 	

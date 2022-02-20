@@ -1,4 +1,4 @@
-package com.alkemy.models;
+package com.alkemy.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

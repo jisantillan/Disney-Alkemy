@@ -5,7 +5,7 @@ package com.alkemy.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.alkemy.models.Personaje;
+import com.alkemy.entity.Personaje;
 
 public interface PersonajeRepository extends JpaRepository<Personaje, Integer >{
 	

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alkemy.models.Genero;
+import com.alkemy.entity.Genero;
 import com.alkemy.service.GeneroService;
 
 
@@ -72,6 +72,6 @@ public class GeneroRestController {
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 
-	
+
 
 }

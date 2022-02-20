@@ -1,18 +1,15 @@
-package com.alkemy.models;
+package com.alkemy.entity;
 
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -34,36 +31,31 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Pelicula {
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+
 	@Id
-	@Getter @Setter @Column(name="id_pelicula")
 	private Integer id;
 
-	@Getter @Setter @Column(name="titulo")
 	private String titulo;
 
-	@Getter @Setter @Column(name="fecha")
 	private Date fecha;
 
-	@Getter @Setter @Column(name="calificacion")
 	private Integer calificacion;
 
-	@Getter @Setter @Column(name="imagen")
 	private String imagen;
-	
+
 	@ManyToMany(fetch=FetchType.LAZY, mappedBy = "peliculas" )
 	@JsonIgnoreProperties("peliculas")
 	private List <Personaje> personajes;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name="id_genero")
-    @JsonBackReference
-    public Genero genero; 
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@JoinColumn(name="id_genero")
+	@JsonBackReference
+	public Genero genero; 
 
 	public List<Personaje> getPersonajes() {
 		return personajes;
 	}
-    public void setPersonajes(List<Personaje> personajes) {
+	public void setPersonajes(List<Personaje> personajes) {
 		this.personajes = personajes;
 	}
 

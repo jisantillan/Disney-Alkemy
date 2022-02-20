@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alkemy.models.Personaje;
+import com.alkemy.entity.Personaje;
 import com.alkemy.service.PersonajeService;
 
 
@@ -30,7 +30,7 @@ public class CharacterRestController {
 	private PersonajeService personajeServicio;
 
 	//	POST METHOD
-	
+
 	@PostMapping("/guardar")
 	public ResponseEntity<String> guardar( @RequestPart(value = "imagen_personaje", required = false) MultipartFile image,@RequestPart("json_personaje") Personaje personaje) {
 		if(!(image==null)) {
@@ -39,7 +39,7 @@ public class CharacterRestController {
 		personajeServicio.guardar(personaje) ;
 		return ResponseEntity.status(HttpStatus.CREATED).body("Personaje creado con exito");
 	}
-	
+
 
 	private void procesarimagen(MultipartFile image, Personaje personaje) {
 		if(!image.isEmpty()){
@@ -58,7 +58,7 @@ public class CharacterRestController {
 	}
 
 	//	PUT METHOD
-	
+
 	@PutMapping("/editar/{id}")
 	public ResponseEntity<Void> editarPersonaje(@PathVariable("id") Integer id, @RequestPart(value = "imagen_personaje", required = false) MultipartFile image,@RequestPart("json_personaje") Personaje personaje) {
 		if(!(image==null)) {
@@ -68,7 +68,7 @@ public class CharacterRestController {
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 
 	}
-	
+
 	//	GET METHODS
 
 	@GetMapping()
@@ -80,9 +80,9 @@ public class CharacterRestController {
 	public ResponseEntity<Personaje> detalle(@PathVariable("id") Integer id){
 		return ResponseEntity.status(HttpStatus.OK).body(personajeServicio.listarPorId(id));
 	}
-	
+
 	//	DELETE METHOD
-	
+
 	@DeleteMapping(path = "delete/{id}")
 	public ResponseEntity<Void> delete(@PathVariable("id") Integer id){
 		personajeServicio.eliminar(id);

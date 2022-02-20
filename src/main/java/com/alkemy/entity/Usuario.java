@@ -1,4 +1,4 @@
-package com.alkemy.models;
+package com.alkemy.entity;
 
 import java.util.Collection;
 import java.util.Collections;

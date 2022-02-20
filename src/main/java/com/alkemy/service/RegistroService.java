@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alkemy.email.EmailSender;
-import com.alkemy.models.RegistroRequest;
-import com.alkemy.models.RolUsuario;
-import com.alkemy.models.Usuario;
+import com.alkemy.entity.RegistroRequest;
+import com.alkemy.entity.RolUsuario;
+import com.alkemy.entity.Usuario;
 import com.alkemy.security.token.ConfirmationToken;
 import com.alkemy.security.token.TokenService;
 
@@ -88,7 +88,7 @@ public class RegistroService {
 	                "                  \n" +
 	                "                    </td>\n" +
 	                "                    <td style=\"font-size:28px;line-height:1.315789474;Margin-top:4px;padding-left:10px\">\n" +
-	                "                      <span style=\"font-family:Helvetica,Arial,sans-serif;font-weight:700;color:#ffffff;text-decoration:none;vertical-align:top;display:inline-block\">Confirm your email</span>\n" +
+	                "                      <span style=\"font-family:Helvetica,Arial,sans-serif;font-weight:700;color:#ffffff;text-decoration:none;vertical-align:top;display:inline-block\">Bienvenido, confirma tu email</span>\n" +
 	                "                    </td>\n" +
 	                "                  </tr>\n" +
 	                "                </tbody></table>\n" +

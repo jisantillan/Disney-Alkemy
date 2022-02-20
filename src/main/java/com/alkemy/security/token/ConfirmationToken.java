@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
-import com.alkemy.models.Usuario;
+import com.alkemy.entity.Usuario;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.alkemy.models;
+package com.alkemy.entity;
 
 
 import lombok.Data;
@@ -26,18 +26,18 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class Genero {
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+
 	@Id
 	private Integer id_genero;
 
 	private String nombre;
 
 	private String imagen;
-	
+
 	@OneToMany(mappedBy = "genero",fetch=FetchType.LAZY, cascade = CascadeType.MERGE)	
 	@JsonManagedReference
 	private List <Pelicula> peliculas;
-	 
-  
+
+
 
 }

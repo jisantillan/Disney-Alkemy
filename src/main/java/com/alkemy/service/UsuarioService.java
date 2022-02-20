@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.alkemy.models.Usuario;
+import com.alkemy.entity.Usuario;
 import com.alkemy.repository.UsuarioRepository;
 import com.alkemy.security.token.ConfirmationToken;
 import com.alkemy.security.token.TokenService;

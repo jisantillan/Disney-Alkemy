@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alkemy.models.RegistroRequest;
+import com.alkemy.entity.RegistroRequest;
 import com.alkemy.service.RegistroService;
 
 import lombok.AllArgsConstructor;

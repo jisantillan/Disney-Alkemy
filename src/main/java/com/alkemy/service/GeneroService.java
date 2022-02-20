@@ -2,7 +2,7 @@ package com.alkemy.service;
 
 import java.util.List;
 
-import com.alkemy.models.Genero;
+import com.alkemy.entity.Genero;
 
 public interface GeneroService {
 	

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alkemy.models.Pelicula;
+import com.alkemy.entity.Pelicula;
 import com.alkemy.service.PeliculaService;
 
 @RestController
@@ -94,7 +94,7 @@ public class PeliculaRestController {
 	public ResponseEntity<Iterable<Object[]>> listarPorNombre(@RequestParam("name") String name){
 		return ResponseEntity.status(HttpStatus.OK).body(peliculaServicio.buscarPorNombre(name));
 	}
-	
+
 	@GetMapping(params="genre")
 	public ResponseEntity<Iterable<Object[]>> listarPorEdad(@RequestParam("genre") Integer genre){
 		return ResponseEntity.status(HttpStatus.OK).body(peliculaServicio.buscarPorGenero(genre));

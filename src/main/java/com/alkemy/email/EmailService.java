@@ -27,8 +27,8 @@ public class EmailService implements EmailSender {
 			MimeMessageHelper helper = new MimeMessageHelper (mimeMessage, "utf-8");
 			helper.setText(email, true);
 			helper.setTo(to);
-			helper.setSubject("Disney Alkemy Confirma tu cuenta");
-			helper.setFrom("javiersantillan.vl@gmail.com");
+			helper.setSubject("Bienvenido a Disney Confirma tu cuenta");
+			helper.setFrom("disney.alkemy.challenge.java@gmail.com");
 			mailSender.send(mimeMessage);
 			
 		}catch(MessagingException e) {

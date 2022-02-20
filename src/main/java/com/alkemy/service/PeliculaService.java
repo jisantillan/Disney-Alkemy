@@ -1,7 +1,7 @@
 package com.alkemy.service;
 
 
-import com.alkemy.models.Pelicula;
+import com.alkemy.entity.Pelicula;
 
 public interface PeliculaService {
 	

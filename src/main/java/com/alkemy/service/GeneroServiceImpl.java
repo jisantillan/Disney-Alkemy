@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alkemy.models.Genero;
+import com.alkemy.entity.Genero;
 import com.alkemy.repository.GeneroRepository;
 
 @Service

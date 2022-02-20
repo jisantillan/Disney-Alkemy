@@ -1,4 +1,4 @@
-package com.alkemy.models;
+package com.alkemy.entity;
 
 public enum RolUsuario {
 	USER,

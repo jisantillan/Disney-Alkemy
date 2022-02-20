@@ -1,7 +1,7 @@
 package com.alkemy.service;
 
 
-import com.alkemy.models.Personaje;
+import com.alkemy.entity.Personaje;
 
 public interface PersonajeService {
 	

@@ -1,4 +1,4 @@
-package com.alkemy.models;
+package com.alkemy.entity;
 
 
 import lombok.AllArgsConstructor;
@@ -19,8 +19,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-
 
 @Entity
 @Table(name="personaje")
